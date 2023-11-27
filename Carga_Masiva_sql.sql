@@ -52,7 +52,7 @@ copy Forma_Farmaceutica_Imagen(Nombre_comercial,Forma_farmaceutica )
 from 'C:/carga_masiva/Forma_Farmaceutica_Imagen.csv'
 with delimiter as ';' csv HEADER ENCODING'windows-1251';	
 
-copy Medicamento(IUM,principio_activo,unidad_de_medida,concentracion,Nombre_comercial_imagen_comercial)
+copy Medicamento(IUM,principio_activo,unidad_de_medida,concentracion,Nombre_comercial_imagen_comercial, Rango_de_costo_unitario)
 from 'C:/carga_masiva/Medicamento.csv'
 with delimiter as ';' csv HEADER ENCODING'windows-1251';	
 
