@@ -1,4 +1,3 @@
-
 CREATE TABLE Importador(
 	id integer,
 	nombre_importador varchar(500),
@@ -23,6 +22,7 @@ CREATE TABLE Medicamento(
 	unidad_de_medida varchar(300),
 	concentracion integer,
 	Nombre_comercial_imagen_comercial varchar(400),
+	Rango_de_costo_unitario varchar(200),
 	PRIMARY KEY(IUM),
 	FOREIGN KEY(Nombre_comercial_imagen_comercial) REFERENCES Imagen_comercial(Nombre_comercial)
 );
@@ -32,7 +32,7 @@ CREATE TABLE solicitud(
 	IUM_Medicamento varchar(200),
 	id_Importador integer,
 	fecha_autorizacion date,
-      Tipo_solicitud varchar(300),
+    Tipo_solicitud varchar(300),
 	PRIMARY KEY(num_solicitud),
 	FOREIGN KEY (IUM_Medicamento) REFERENCES Medicamento(IUM),
 	FOREIGN KEY (id_Importador) REFERENCES Importador(id)
@@ -52,12 +52,11 @@ copy Forma_Farmaceutica_Imagen(Nombre_comercial,Forma_farmaceutica )
 from 'C:/carga_masiva/Forma_Farmaceutica_Imagen.csv'
 with delimiter as ';' csv HEADER ENCODING'windows-1251';	
 
-copy Medicamento(IUM,principio_activo,unidad_de_medida,concentracion,Nombre_comercial_imagen_comercial, Rango_de_costo_unitario)
+copy Medicamento(IUM,principio_activo,unidad_de_medida,concentracion,Nombre_comercial_imagen_comercial,Rango_de_costo_unitario)
 from 'C:/carga_masiva/Medicamento.csv'
 with delimiter as ';' csv HEADER ENCODING'windows-1251';	
 
 
 copy solicitud(num_solicitud,IUM_Medicamento,id_Importador,fecha_autorizacion,Tipo_solicitud)
 from 'C:/carga_masiva/solicitud.csv'
-with delimiter as ';' csv HEADER ENCODING'windows-1251';	
-
+with delimiter as ';' csv HEADER ENCODING'windows-1251';
